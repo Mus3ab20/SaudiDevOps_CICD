@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        dockerRun = "docker run -p 8000:80 -d --name cloudmu  mus3ab/SaudiDevOps_CICD:latest"
+        dockerRun = "docker run -p 8000:80 -d --name cloudmu  mus3ab20/saudidevops_cicd:latest"
         dockerrm = "docker container rm -f cloudmu"
-        dockerimagerm = "docker image rmi  mus3ab/SaudiDevOps_CICD"
+        dockerimagerm = "docker image rmi  mus3ab20/saudidevops_cicd"
     }
         
 
@@ -27,10 +27,10 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'mobilehubpassword', variable: 'mobilehubpassword')]) {
     // some block
-    sh 'docker login -u sd171991 -p ${mobilehubpassword}'
-    sh 'docker image push sd171991/$JOB_NAME:v1.$BUILD_ID'
-    sh 'docker image push sd171991/$JOB_NAME:latest'
-    sh 'docker image rmi $JOB_NAME:v1.$BUILD_ID sd171991/$JOB_NAME:v1.$BUILD_ID sd171991/$JOB_NAME:latest'
+    sh 'docker login -u mus3ab20 -p ${mobilehubpassword}'
+    sh 'docker image push mus3ab20/$JOB_NAME:v1.$BUILD_ID'
+    sh 'docker image push mus3ab20/$JOB_NAME:latest'
+    sh 'docker image rmi $JOB_NAME:v1.$BUILD_ID mus3ab20/$JOB_NAME:v1.$BUILD_ID mus3ab20/$JOB_NAME:latest'
 }
             }
         }
