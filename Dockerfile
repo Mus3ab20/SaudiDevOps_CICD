@@ -1,5 +1,5 @@
 FROM centos:latest
-MAINTAINER mnadir@codingdojo.com
+MAINTAINER mus3ab2019@gmail.com
 RUN yum install -y httpd \
   zip \ 
  unzip
